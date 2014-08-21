@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/result.css">
+    </head>
+<body>
+    <div class="container">
+    <div id="search-container">
+        <div id="ninja">
+            <a href="/"><img src="../static/image/ninja.png"></a></div>
+        <form role="form" class="row" id="search-form">
+            <div class="form-group col-md-5 col-xs-7" >
+             <input type="text" class="form-control" id="keyword" placeholder="search ninja" name="q" value="{{q}}">
+            </div>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span></button>
+        </form>
+    </div>
+    
+    
+    
+    <div class="row" id="cost">
+        <h6 >{{ res['hits']['total'] }} results  (cost {{cost*1000}} ms)</h6>
+    </div>
+    <div class="row" id="result">
+    {% autoescape off %}
+    {% for r in res['hits']['hits'] %}
+        <div id="item">
+            <!-- title -->
+            <h4 id="item-title">
+            <a href="{{ r['_source']['url'] }}" target="_blank">
+                {% if r['highlight'].has_key('title') %}
+                    {{ r['highlight']['title'][0] | e | replace("&lt;em&gt;", "<em>") | replace("&lt;/em&gt;","</em>") }}
+                {% else %}
+                    {{ r['_source']['title'] | e }}
+                {% endif %}
+            </a></h4>
+
+            <!--content-->
+            <p id="item-content">
+            {% if r['highlight'].has_key('content') %}
+                {{ r['highlight']['content'][0] | e | replace("&lt;em&gt;", "<em>") | replace("&lt;/em&gt;","</em>") }}
+            {% else %}
+                {{ r['_source']['content'][0:50] | e }}
+            {% endif %}
+            </p>
+        </div>
+    
+    {% endfor %}
+    {% endautoescape %}
+    </div>
+    
+    <!-- pages -->
+    <ul class="row pagination pagination-lg">
+    {% for num in pages %}
+        {% if num == current %}
+            <li class="active">
+        {% else %}
+            <li>
+        {% endif %}
+        <a href="/?q={{q}}&from={{num*10}}">{{num}}</a></li>
+    {% endfor %}
+    </ul>
+    <!-- pages -->
+    </div>
+</body>
+</html>
