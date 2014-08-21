@@ -1,4 +1,4 @@
-geek-search
+ninja-search
 ===
 
 [http://v2ex.shixiz.com](http://v2ex.shixiz.com)
