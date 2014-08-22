@@ -1,7 +1,7 @@
 ## nginx conf
 
-1. copy `ninja-search.conf` to nigin/conf/site_available  
-2. ln -s site_available/ninja-search site_enable/ninja-search 
+1. copy `ninja-search.conf` to nigin/sites_available  
+2. ln -s sites_available/ninja-search sites_enable/ninja-search 
 
 ## start server 
 
