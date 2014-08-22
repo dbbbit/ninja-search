@@ -2,12 +2,12 @@ from flask import Flask
 from search import Search
 from flask import request
 from flask import render_template
-from util import gen_pages
+from util import gen_pages, pretty_date
 from time import time
 import json
 
 app = Flask(__name__)
-app.debug = False
+app.debug = False 
 
 @app.route("/", methods=['GET'])
 def index():
@@ -24,7 +24,6 @@ def index():
         return render_template("index.html")
 
     s = Search(index='v2ex', doc_type='topic')
-    s['_source_include'] = ['created', 'url', 'title', 'content']
     s['q'] = "content:%s OR title:%s" % (q, q)
     s['from_'] = _from
     
@@ -39,7 +38,9 @@ def index():
     current = _from / 10
     max_page = total / 10
     pages = gen_pages(current, max_page)
-    return render_template('result.html', res=result, pages=pages, current=current, q=q, cost=time1-time0)
+    return render_template('result.html', res=result, pages=pages, \
+        current=current, q=q, cost=time1-time0, pretty_date=pretty_date, \
+        enumerate=enumerate)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

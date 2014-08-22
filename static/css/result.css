@@ -6,9 +6,29 @@ em {
 
 #item {
 	width: 60%;
-	margin-bottom: 2em;
+	/*margin-bottom: 1em;*/
+	padding: 1em;
 }
 
+#item-info {
+	color: #888;
+	font-size: x-small;
+}
+
+#item-extra {
+	color: #888;
+	font-weight: bold;
+}
+
+#item-avatar {
+	float: left;
+	margin-right: 1.5em;
+	width: 28px;
+}
+
+#item-info> p {
+	margin-bottom: 5px;
+}
 a {
 	color: #005EBB;;
 }
