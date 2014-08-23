@@ -81,3 +81,8 @@ a {
 .pagination> li> a:hover {
 	color: red;
 }
+
+/* stats */
+#histats_counter {
+	display: none;
+}
