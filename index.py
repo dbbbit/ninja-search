@@ -25,6 +25,7 @@ def index():
         return render_template("index.html")
 
     search = Search(index='v2ex', doc_type='topic')
+    #Todo:escape
     search['q'] = "content:%s OR title:%s" % (q, q)
     search['from_'] = _from
     search['sort'] = '_score'
