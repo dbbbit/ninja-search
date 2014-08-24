@@ -7,6 +7,21 @@ a {
 	color: #065FB4;
 }
 
+#search-form {
+	margin-top: 3em;
+}
+
+#cost {
+	float: left;
+	margin-right: 2em;
+}
+
+#sort-bar {
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #item {
 	width: 60%;
 	padding-bottom: 1em;
@@ -48,10 +63,6 @@ a {
 	background-color: #fefefe;
 	padding-top: 2em;
 	margin-left: -9em;
-}
-
-#search-form {
-	margin-top: 3em;
 }
 
 .container {

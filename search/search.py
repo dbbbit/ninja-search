@@ -13,7 +13,7 @@ class Search:
                     "content" : {},
                     "title" : {}
                 }
-             },
+             }
         }
         self.params.update(kargs)
         self.params['body'] = self.DSL

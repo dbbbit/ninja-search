@@ -3,7 +3,14 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="../static/css/result.css">
+        <title>Search · {{q}}</title>
+        <link rel="shortcut icon" href="../static/favicon.ico" />
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
 <body>
     <div class="container">
@@ -19,11 +26,22 @@
         </form>
     </div>
     
-    
-    
-    <div class="row" id="cost">
-        <h6 >{{ res['hits']['total'] }} results  (cost {{cost*1000}} ms)</h6>
+    <div class="row">
+        <p id="cost">{{ res['hits']['total'] }} results  (cost {{cost*1000}} ms)</p>
+        <!-- sort-bar -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                sort <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{'active' if s==''}}"><a href="/?q={{q}}&s=">best match</a></li>
+                <li class="{{'active' if s=='created'}}"><a href="/?q={{q}}&s=created">created time</a></li>
+                <li class="{{'active' if s=='replies'}}"><a href="/?q={{q}}&s=replies">replies number</a></li>
+            </ul>
+        </div>
     </div>
+    
+    <!--result list-->
     <div class="row" id="result">
     {% autoescape off %}
     {% for idx,r in enumerate(res['hits']['hits']) %}
@@ -83,21 +101,5 @@
     </ul>
     <!-- pages -->
     </div>
-
-    <!--stat code-->
-    <!-- Histats.com  (div with counter) -->
-    <div id="histats_counter"></div>
-    <!-- Histats.com  START  (aync)-->
-      <script type="text/javascript">var _Hasync= _Hasync|| [];
-        _Hasync.push(['Histats.start', '1,2763027,4,605,110,55,00010000']);
-        _Hasync.push(['Histats.fasi', '1']);
-        _Hasync.push(['Histats.track_hits', '']);
-        (function() {
-        var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-        hs.src = ('http://s10.histats.com/js15_as.js');
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-        })();</script>
-        <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?2763027&101" alt="web page hit counter" border="0"></a></noscript>
-    <!-- Histats.com  END  -->
 </body>
 </html>
