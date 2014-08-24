@@ -26,6 +26,7 @@ em {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	margin-right: 1em;
 }
 #item-content {
 	display: none;
@@ -39,8 +40,11 @@ em {
 
 #item-info-main {
 	margin-top: 0em;
+	margin-right: 2em;
 }
 
 #item-extra {
 	font-size: x-small;
+	border-left: solid 1px;
+	padding-left: 1em;
 }
