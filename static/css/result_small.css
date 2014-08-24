@@ -1,0 +1,45 @@
+em {
+	color: rgb(201, 24, 24);
+	font-style: normal;
+}
+
+#ninja {
+	margin: 1em 0em 1em 6em;
+}
+
+#search-form {
+	margin-left: 1em;
+}
+
+#cost {
+	margin-left: 1em;
+	float: left;
+}
+
+#sort-bar {
+	margin-left: 1em;
+}
+
+#item {
+	margin-left: 1em;
+}
+
+#item-title {
+	font-size: 1.2em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#item-content {
+	display: none;
+}
+
+#item-avatar {
+	float: left;
+	margin-right: 1em;
+	width: 35px;
+}
+
+#item-extra-wrapper {
+	font-size: x-small;
+}

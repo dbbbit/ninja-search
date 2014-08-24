@@ -4,7 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/result.css">
+        <!--normal screen-->
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 500px)" href="../static/css/result.css">
+
+        <!--small screen-->
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="../static/css/result_small.css">
+
         <title>Search · {{q|e}}</title>
         <link rel="shortcut icon" href="../static/favicon.ico" />
         <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -29,7 +34,7 @@
     <div class="row">
         <p id="cost">{{ res['hits']['total'] }} results  (cost {{cost*1000}} ms)</p>
         <!-- sort-bar -->
-        <div class="btn-group">
+        <div class="btn-group" id="sort-bar">
             <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
                 排序 <span class="caret"></span>
             </button>
@@ -69,8 +74,7 @@
 
             <!--info-->
             <div id="item-info">
-                
-                <p>
+                <p id="item-info-main">
                     <a href="http://v2ex.com/member/{{ r['_source']['member']['username'] }}" target="_blank">
                         <img id="item-avatar" src="{{ r['_source']['member']['avatar_normal'] }}"></img></a>
                     submitted {{pretty_date(r['_source']['created']/1000)}} by
@@ -79,7 +83,7 @@
                     <a href="{{ r['_source']['node']['url'] }}">
                         {{ r['_source']['node']['title']}}</a>
                 </p>
-                <p>
+                <p id="item-extra-wrapper">
                     <span id="item-extra">{{ r['_source']['replies']}} comments</span>
                 </p>
             </div>
@@ -89,7 +93,7 @@
     </div>
     
     <!-- pages -->
-    <ul class="row pagination pagination-lg">
+    <ul class="row pagination">
     {% for num in pages %}
         {% if num == current %}
             <li class="active">
