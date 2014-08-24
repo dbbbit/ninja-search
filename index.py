@@ -45,7 +45,7 @@ def index():
     pages = gen_pages(current, max_page)
     return render_template('result.html', res=result, pages=pages, \
         current=current, q=q, s=s, cost=time1-time0, pretty_date=pretty_date, \
-        enumerate=enumerate)
+        enumerate=enumerate, int=int)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

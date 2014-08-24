@@ -23,7 +23,7 @@
         <div id="ninja">
             <a href="/"><img src="../static/image/ninja.png"></a></div>
         <form role="form" class="row" id="search-form">
-            <div class="form-group col-md-5 col-xs-7" >
+            <div class="form-group col-md-5 col-xs-9" >
              <input type="text" class="form-control" id="keyword" placeholder="search ninja" name="q" value="{{q}}">
             </div>
             <button type="submit" class="btn btn-default">
@@ -32,7 +32,7 @@
     </div>
     
     <div class="row">
-        <p id="cost">{{ res['hits']['total'] }} results  (cost {{cost*1000}} ms)</p>
+        <p id="cost">{{ res['hits']['total'] }} results  (cost {{ int(cost*1000) }} ms)</p>
         <!-- sort-bar -->
         <div class="btn-group" id="sort-bar">
             <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -82,10 +82,11 @@
                         {{ r['_source']['member']['username'] }}</a>  to
                     <a href="{{ r['_source']['node']['url'] }}">
                         {{ r['_source']['node']['title']}}</a>
-                </p>
-                <p id="item-extra-wrapper">
                     <span id="item-extra">{{ r['_source']['replies']}} comments</span>
                 </p>
+                
+                    
+               
             </div>
         </div>
     {% endfor %}

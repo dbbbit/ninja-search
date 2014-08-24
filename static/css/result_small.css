@@ -7,21 +7,18 @@ em {
 	margin: 1em 0em 1em 6em;
 }
 
-#search-form {
-	margin-left: 1em;
-}
-
 #cost {
 	margin-left: 1em;
 	float: left;
 }
 
 #sort-bar {
-	margin-left: 1em;
+	margin-left: 3.3em;
 }
 
 #item {
 	margin-left: 1em;
+	border-top: 1px solid #ebebeb;
 }
 
 #item-title {
@@ -40,6 +37,10 @@ em {
 	width: 35px;
 }
 
-#item-extra-wrapper {
+#item-info-main {
+	margin-top: 0em;
+}
+
+#item-extra {
 	font-size: x-small;
 }

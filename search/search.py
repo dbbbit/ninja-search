@@ -13,7 +13,8 @@ class Search:
                     "content" : {},
                     "title" : {}
                 }
-             }
+             },
+             "min_score": 0.5,
         }
         self.params.update(kargs)
         self.params['body'] = self.DSL
