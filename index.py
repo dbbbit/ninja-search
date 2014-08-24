@@ -27,7 +27,7 @@ def index():
     search = Search(index='v2ex', doc_type='topic')
     search['q'] = "content:%s OR title:%s" % (q, q)
     search['from_'] = _from
-
+    search['sort'] = '_score'
     if s in ["replies", "created"]:
         search['sort'] = "%s:desc"%s
     
