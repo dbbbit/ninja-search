@@ -14,7 +14,7 @@ class Search:
                     "title" : {}
                 }
              },
-             "min_score": 0.5,
+             "min_score": 0,
         }
         self.params.update(kargs)
         self.params['body'] = self.DSL

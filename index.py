@@ -31,6 +31,7 @@ def index():
     search['sort'] = '_score'
     if s in ["replies", "created"]:
         search['sort'] = "%s:desc"%s
+        search.params['body']['min_score'] = 0.2
     
     time0 = time()
     result = search.exe()
