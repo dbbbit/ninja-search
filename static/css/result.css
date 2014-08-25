@@ -17,7 +17,7 @@ a {
 }
 
 #item {
-	width: 60%;
+	width: 50%;
 	padding-bottom: 1em;
 }
 
@@ -29,6 +29,7 @@ a {
 
 #item-content {
 	font-color: #545454;
+	word-wrap: break-word;
 }
 
 #item-info {
