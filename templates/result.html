@@ -33,6 +33,7 @@
     
     <div class="row">
         <p id="cost">{{ res['hits']['total'] }} results  (cost {{ int(cost*1000) }} ms)</p>
+
         <!-- sort-bar -->
         <div class="btn-group" id="sort-bar">
             <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -54,14 +55,14 @@
         <div id="item">
 
             <!-- title -->
-            <h3 id="item-title">
+            <h4 id="item-title">
                 <a href="{{ r['_source']['url'] }}" target="_blank">
                 {% if r.has_key('highlight') and r['highlight'].has_key('title') %}
                     {{ r['highlight']['title'][0]| e | replace("&lt;em&gt;", "<em>") | replace("&lt;/em&gt;","</em>") }}
                 {% else %}
                     {{ r['_source']['title'] | e }}
                 {% endif %}
-                </a></h3>
+                </a></h4>
 
             <!--content-->
             <p id="item-content">
@@ -95,6 +96,9 @@
     
     <!-- pages -->
     <ul class="row pagination">
+    {% if (current-1) in pages %}
+        <li><a href="/?q={{q}}&from={{(current+1)*10}}&s={{s}}">&laquo;</a></li>
+    {% endif %}
     {% for num in pages %}
         {% if num == current %}
             <li class="active">
@@ -103,9 +107,13 @@
         {% endif %}
         <a href="/?q={{q}}&from={{num*10}}&s={{s}}">{{num}}</a></li>
     {% endfor %}
+    {% if (current+1) in pages %}
+        <li><a href="/?q={{q}}&from={{(current+1)*10}}&s={{s}}">&raquo;</a></li>
+    {% endif %}
     </ul>
     <!-- pages -->
     </div>
+
     <!--GA-->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

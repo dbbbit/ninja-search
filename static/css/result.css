@@ -22,7 +22,6 @@ a {
 }
 
 #item-title {
-	font-size: 1.3em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
