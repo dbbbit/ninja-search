@@ -97,7 +97,7 @@
     <!-- pages -->
     <ul class="row pagination">
     {% if (current-1) in pages %}
-        <li><a href="/?q={{q}}&from={{(current+1)*10}}&s={{s}}">&laquo;</a></li>
+        <li><a href="/?q={{q}}&from={{(current-1)*10}}&s={{s}}">&laquo;</a></li>
     {% endif %}
     {% for num in pages %}
         {% if num == current %}
