@@ -1,7 +1,5 @@
-from flask import Flask
+from flask import Flask, request, render_template
 from search import Search
-from flask import request
-from flask import render_template
 from util import gen_pages, pretty_date
 from time import time
 import json
@@ -25,14 +23,26 @@ def index():
         return render_template("index.html")
 
     search = Search(index='v2ex', doc_type='topic')
-    #Todo:escape
     search['q'] = "content:%s OR title:%s" % (q, q)
     search['from_'] = _from
     search['sort'] = '_score'
+
     if s in ["replies", "created"]:
         search['sort'] = "%s:desc"%s
         search.params['body']['min_score'] = 0.2
-    
+        
+    if s == 'sumup':
+        search.params['body']['sort'] = {
+            "_script" : {
+                "script" : "(doc['created'].value-1272124800000) * log10(doc['replies'].value+1)* log10(doc.score)",
+                "type" : "number",
+                "params" : {
+                    "factor" : 0
+                },
+                "order" : "desc"
+            }
+        }
+
     time0 = time()
     result = search.exe()
     time1 = time()
