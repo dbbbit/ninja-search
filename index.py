@@ -22,7 +22,7 @@ def index():
     if len(q) == 0:
         return render_template("index.html")
 
-    search = Search(index='v2ex', doc_type='topic')
+    search = Search(index='v2', doc_type='topic')
     search['q'] = "content:%s OR title:%s" % (q, q)
     search['from_'] = _from
     search['sort'] = '_score'
@@ -59,4 +59,4 @@ def index():
         enumerate=enumerate, int=int)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8000)
