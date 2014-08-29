@@ -11,7 +11,8 @@ class Search:
             "highlight" : {
                 "fields" : {
                     "content" : {},
-                    "title" : {}
+                    "title" : {},
+                    "rcontent" : {},
                 }
              },
              "min_score": 0,

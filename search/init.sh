@@ -74,6 +74,9 @@ curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
 			    "replies": {
 					"type": "long", "store":"yes"
 				},
+                "rcontent": {
+                    "type": "string"
+                },
 			    "title": {
 					"type": "string"
 				},

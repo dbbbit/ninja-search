@@ -19,8 +19,8 @@
             <p id="item-content">
             {% if r.has_key('highlight') and r['highlight'].has_key('content') %}
                 {{ r['highlight']['content'][0] | e | replace("&lt;em&gt;", "<em>") | replace("&lt;/em&gt;","</em>") }}
-            {% else %}
-                {{ '' }}
+            {% elif r.has_key('highlight') and r['highlight'].has_key('rcontent') %}
+                {{ r['highlight']['rcontent'][0] | e | replace("&lt;em&gt;", "<em>") | replace("&lt;/em&gt;","</em>") }}
             {% endif %}
             </p>
 

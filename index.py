@@ -6,7 +6,7 @@ from time import time
 import json
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 @app.route("/", methods=['GET'])
 def index():
@@ -23,12 +23,13 @@ def index():
         return render_template("index.html")
 
     search = Search(index='v2', doc_type='topic')
-    search['q'] = "content:%s OR title:%s" % (q, q)
+    search['q'] = "content:%s OR title:%s OR rcontent:%s" % (q, q, q)
     search['from_'] = _from
     search['sort'] = '_score'
 
     if len(s) == 0:
         s="sumup"
+
     if s in ["replies", "created"]:
         search['sort'] = "%s:desc"%s
         search.params['body']['min_score'] = 0.2
