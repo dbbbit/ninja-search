@@ -1,9 +1,7 @@
 ninja-search
 ===
 
-[http://v2ex.shixiz.com](http://v2ex.shixiz.com)
-
-A search engine for v2ex.com.
+[shixiz.com](http://shixiz.com)
 
 ### require:
 
@@ -11,10 +9,6 @@ A search engine for v2ex.com.
 * [elasticsearch]()
 * [v2ex-scrapy (crawlers)]()
 
-### Todo:
-
-* find out A better sort algorithm for search result.
-* add search for members.
 
 
 

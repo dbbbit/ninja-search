@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!--normal screen-->
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 500px)" href="../static/css/result.css">
+
+        <!--small screen-->
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="../static/css/result_small.css">
+
+        <title>Search · {{q|e}}</title>
+        <link rel="shortcut icon" href="../static/favicon.ico" />
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="container">
+    <div id="search-container">
+        <div id="ninja">
+            <a href="/"><img src="../static/image/ninja.png"></a></div>
+        <form role="form" class="row" id="search-form">
+            <div class="form-group col-md-5 col-xs-9" >
+             <input type="text" class="form-control" id="keyword" placeholder="search ninja" name="q" value="{{q}}">
+            </div>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span></button>
+        </form>
+    </div>
+
+    <div class="row">
+        <p id="cost">{{ res['hits']['total'] }} results  (cost {{ int(cost*1000) }} ms)</p>
+        <span>Sort by:</span>
+        <!-- sort-bar -->
+        <div class="btn-group" id="sort-bar">
+            <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                {{ sort_by[s] }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            {% for key in sort_by.keys() %}
+                <li class="{{'active' if key==s}}"><a href="/{{route}}?q={{q}}&s={{key}}">{{sort_by[key]}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" id="result">
+        {% block result %}{% endblock %}
+    </div>
+
+    <!--container-->
+    </div>
+
+     <!--GA-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-54127655-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>

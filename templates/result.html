@@ -1,55 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <!--normal screen-->
-        <link rel="stylesheet" type="text/css" media="screen and (min-width: 500px)" href="../static/css/result.css">
-
-        <!--small screen-->
-        <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="../static/css/result_small.css">
-
-        <title>Search · {{q|e}}</title>
-        <link rel="shortcut icon" href="../static/favicon.ico" />
-        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-        <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    </head>
-<body>
-    <div class="container">
-    <div id="search-container">
-        <div id="ninja">
-            <a href="/"><img src="../static/image/ninja.png"></a></div>
-        <form role="form" class="row" id="search-form">
-            <div class="form-group col-md-5 col-xs-9" >
-             <input type="text" class="form-control" id="keyword" placeholder="search ninja" name="q" value="{{q}}">
-            </div>
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span></button>
-        </form>
-    </div>
-    
-    <div class="row">
-        <p id="cost">{{ res['hits']['total'] }} results  (cost {{ int(cost*1000) }} ms)</p>
-
-        <!-- sort-bar -->
-        <div class="btn-group" id="sort-bar">
-            <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-                排序 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li class="{{'active' if s==''}}"><a href="/?q={{q}}&s=">匹配度</a></li>
-                <li class="{{'active' if s=='created'}}"><a href="/?q={{q}}&s=created">发布时间</a></li>
-                <li class="{{'active' if s=='replies'}}"><a href="/?q={{q}}&s=replies">回复数</a></li>
-                <li class="{{'active' if s=='sumup'}}"><a href="/?q={{q}}&s=sumup">综合</a></li>
-            </ul>
-        </div>
-    </div>
-    
-    <!--result list-->
-    <div class="row" id="result">
+{% extends 'result_base.html' %}  
+{% block result %}
     {% autoescape off %}
     {% for idx,r in enumerate(res['hits']['hits']) %}
         
@@ -85,10 +35,7 @@
                     <a href="{{ r['_source']['node']['url'] }}">
                         {{ r['_source']['node']['title']}}</a>
                     <span id="item-extra">{{ r['_source']['replies']}} comments</span>
-                </p>
-                
-                    
-               
+                </p>         
             </div>
         </div>
     {% endfor %}
@@ -112,17 +59,7 @@
         <li><a href="/?q={{q}}&from={{(current+1)*10}}&s={{s}}">&raquo;</a></li>
     {% endif %}
     </ul>
-    <!-- pages -->
-    </div>
+    <!-- pages end-->
+    
 
-    <!--GA-->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-54127655-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-</body>
-</html>
+{% endblock %}
