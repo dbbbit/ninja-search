@@ -9,7 +9,7 @@ ninja-search
 * [elasticsearch]()
 * [v2ex-scrapy (crawlers)]()
 
-新建索引
+索引
 --------
 
 创建 index  
@@ -20,8 +20,12 @@ mapping scheme
 
     ./search/init.sh
 
-索引数据
+mongo index
 
+    db.reply.createIndex({topic_id:1})
+
+索引数据
+    
     ./util/mongo2es.py
 
 
