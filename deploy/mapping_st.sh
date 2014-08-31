@@ -1,21 +1,14 @@
 #!/bin/bash
-curl -XPUT "http://localhost:9200/v2_1/topic/_mapping" -d '
+# st==standard
+curl -XPUT "http://localhost:9200/st"
+curl -XPUT "http://localhost:9200/st/topic/_mapping" -d '
 {
 	
 		"topic": {
-			"_all": {
-            	"indexAnalyzer": "ik",
-            	"searchAnalyzer": "ik",
-            	"term_vector": "no",
-            	"store": "false"
-        	},
+        	
 			"properties": {
 			    "content": {
-					"type": "string",
-					"term_vector": "with_positions_offsets",
-                	"indexAnalyzer": "ik",
-                	"searchAnalyzer": "ik",
-                	"include_in_all": "true"
+					"type": "string"
 				},
 			    "content_rendered": {
 					"type": "string", "index":"no"
@@ -69,8 +62,7 @@ curl -XPUT "http://localhost:9200/v2_1/topic/_mapping" -d '
 							"type": "string", "index":"no"
 						},
 					    "title": {
-							"type": "string", 
-							"index":"no"
+							"type": "string", "index":"no"
 						},
 					    "topics": {
 							"type": "long"
@@ -84,20 +76,10 @@ curl -XPUT "http://localhost:9200/v2_1/topic/_mapping" -d '
 					"type": "long", "store":"yes"
 				},
                 "rcontent": {
-                    "type": "string",
-                    "term_vector": "with_positions_offsets",
-                	"indexAnalyzer": "ik",
-                	"searchAnalyzer": "ik",
-                	"include_in_all": "true",
-                	"boost":0.7
+                    "type": "string"
                 },
 			    "title": {
-					"type": "string",
-					"term_vector": "with_positions_offsets",
-                	"indexAnalyzer": "ik",
-                	"searchAnalyzer": "ik",
-                	"include_in_all": "true",
-                	"boost":1.5
+					"type": "string"
 				},
 			    "url": {
 					"type": "string", "index":"no"
@@ -108,13 +90,3 @@ curl -XPUT "http://localhost:9200/v2_1/topic/_mapping" -d '
 }
 '
 
-curl -XPOST localhost:9200/_aliases -d '
-{
-    "actions": [
-        { "add": {
-            "alias": "v2",
-            "index": "v2_1"
-        }}
-    ]
-}
-'

@@ -1,17 +1,18 @@
 #!/usr/bin/python
 import time
+import sys
 from elasticsearch import Elasticsearch
 from datetime import datetime
 from pymongo import MongoClient
 
-START = 1
+START = 85255
 es = Elasticsearch()
 client = MongoClient('mongodb://localhost:27017/')
 
 
 def index(index_name):
     db = client['v2ex']['topic'] 
-    cursor = db.find({"_id":{"$gt":START}}).sort([('_id',-1)])
+    cursor = db.find({"_id":{"$lt":START}}).sort([('_id',-1)]).batch_size(10)
     for item in cursor:
         item['created'] = item['created'] * 1000
         item['last_modified'] = item['last_modified'] * 1000
@@ -51,5 +52,5 @@ def get_replies(topic_id):
 
 
 if __name__ == '__main__':
-    index('v2_2')
+    index(sys.argv[1])
 
