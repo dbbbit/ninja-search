@@ -35,12 +35,17 @@ esroot /config /elasticsearch.yml
     sh ninja-search/deploy/mapping_ik.sh
 
 mongo index
-
+    
+    #: 手动创建索引
     db.reply.createIndex({topic_id:1})
 
 索引数据
     
-    deploy/mongo2es.py
+    deploy/mongo2es.py ik
+    
+将线上索引指向新的索引
+    
+    sh deploy/alias_v2_ik.sh
 
 
 Run
