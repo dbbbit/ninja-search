@@ -18,12 +18,10 @@ ninja-search
 
 mapping scheme  
 
-elasticsearch 下执行
-
+    elasticsearch 下执行
     ./search/init.sh
 
-elasticsearch-rtf 下执行
-
+    elasticsearch-rtf 下执行
     ./search/init_with_ik.sh
 
 mongo index
