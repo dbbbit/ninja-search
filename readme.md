@@ -33,8 +33,7 @@ elasticsearch-rtf / elasticsearch / bin / service / elasticsearch.conf
 
 elasticsearch-rtf / config /elasticsearch.yml
 
-启用 ES 动态脚本,以提供综合排序
-
+    #:启用 ES 动态脚本,以提供综合排序
     script.disable_dynamic: false
 
 
