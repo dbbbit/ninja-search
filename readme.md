@@ -51,11 +51,11 @@ mapping scheme
 
 * elasticsearch 下执行
 
-        ./deploy/init.sh
+        deploy/init.sh
 
 * elasticsearch-rtf 下执行
 
-        ./deploy/init_with_ik.sh
+        deploy/init_with_ik.sh
 
 mongo index
 
@@ -63,7 +63,7 @@ mongo index
 
 索引数据
     
-    ./util/mongo2es.py
+    deploy/mongo2es.py
 
 
 Run
