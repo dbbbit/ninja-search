@@ -1,5 +1,5 @@
 #!/bin/bash
-curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
+curl -XPUT "http://localhost:9200/v2_1/topic/_mapping" -d '
 {
 	
 		"topic": {
@@ -105,5 +105,16 @@ curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
 			}
 		}
 	
+}
+'
+
+curl -XPOST localhost:9200/_aliases -d '
+{
+    "actions": [
+        { "add": {
+            "alias": "v2",
+            "index": "v2_1"
+        }}
+    ]
 }
 '

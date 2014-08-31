@@ -1,6 +1,5 @@
 #!/bin/bash
-#:unblock next line for first time use;
-#curl -XPOST "http://localhost:9200/v2"
+
 curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
 {
 	
