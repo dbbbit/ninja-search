@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import time
 from elasticsearch import Elasticsearch
 from datetime import datetime
 from pymongo import MongoClient
@@ -8,7 +9,7 @@ es = Elasticsearch()
 client = MongoClient('mongodb://localhost:27017/')
 
 
-def index():
+def index(index_name):
     db = client['v2ex']['topic'] 
 
     for item in db.find():
@@ -16,8 +17,12 @@ def index():
         item['last_modified'] = item['last_modified'] * 1000
         item['last_touched'] = item['last_touched'] * 1000
         item['rcontent'] = get_replies(item['_id'])
-
-        res = es.index(index='v2', doc_type="topic", id=item['_id'], body=item)
+        try:
+            es.index(index=index_name, doc_type="topic", id=item['_id'], body=item)
+        except Exception, e:
+            print(e)
+            time.sleep(5)
+       
         info = "indexed topic %d"%(item['_id'])
         print(info)
 
@@ -40,5 +45,5 @@ def get_replies(topic_id):
 
 
 if __name__ == '__main__':
-    index()
-    print(get_replies(1000))
+    index('v2_1')
+

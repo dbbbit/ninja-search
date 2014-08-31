@@ -1,4 +1,5 @@
 #coding:utf8
+
 from flask import Flask, request, render_template
 from search import Search
 from util import gen_pages, pretty_date
@@ -6,7 +7,7 @@ from time import time
 import json
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 
 @app.route("/", methods=['GET'])
 def index():
@@ -23,7 +24,15 @@ def index():
         return render_template("index.html")
 
     search = Search(index='v2', doc_type='topic')
-    search['q'] = "content:%s OR title:%s OR rcontent:%s" % (q, q, q)
+    search.params['body']['query'] = \
+        { 
+            "multi_match" : 
+                    { 
+                        "query":"%s"%q ,
+                        "fields":["title","content", "rcontent"]
+                    }
+        }
+
     search['from_'] = _from
     search['sort'] = '_score'
 
@@ -32,7 +41,6 @@ def index():
 
     if s in ["replies", "created"]:
         search['sort'] = "%s:desc"%s
-        search.params['body']['min_score'] = 0.2
         
     if s == 'sumup':
         search.params['body']['sort'] = {
