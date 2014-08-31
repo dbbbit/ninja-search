@@ -32,11 +32,12 @@ elasticsearch-rtf / config /elasticsearch.yml
 
 mapping scheme  
 
-    elasticsearch 下执行
-    ./search/init.sh
+* elasticsearch 下执行
+    ./deploy/init.sh
 
-    elasticsearch-rtf 下执行
-    ./search/init_with_ik.sh
+
+* elasticsearch-rtf 下执行
+    ./deploy/init_with_ik.sh
 
 mongo index
 
