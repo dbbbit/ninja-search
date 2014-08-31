@@ -11,7 +11,7 @@ client = MongoClient('mongodb://localhost:27017/')
 
 def index(index_name):
     db = client['v2ex']['topic'] 
-    cursor = db.find({"_id":{"$gt":START}}).sort('_id')
+    cursor = db.find({"_id":{"$gt":START}}).sort([('_id',-1)])
     for item in cursor:
         item['created'] = item['created'] * 1000
         item['last_modified'] = item['last_modified'] * 1000
@@ -27,7 +27,7 @@ def index(index_name):
             time.sleep(5)
             continue
        
-        info = "indexed topic %d cost time %d"%(item['_id'],b-a)
+        info = "cost %d ms indexed\n"%((b-a)*1000)
         print(info)
 
 
@@ -40,14 +40,16 @@ def get_replies(topic_id):
 
     rcontent = u""
     db = client['v2ex']['reply']
+    a = time.time()
     for r in db.find({"topic_id":topic_id}):
         rcontent += r['member']['username']     
         rcontent += " " + datetime.fromtimestamp(r['created']).strftime('%Y-%m-%d')
         rcontent += " " + r['content'] + "    "
-
+    b=time.time()
+    print("cost %d ms to find the [%d]."%((b-a)*1000, topic_id))
     return rcontent
 
 
 if __name__ == '__main__':
-    index('v2_1')
+    index('v2_2')
 

@@ -1,16 +1,9 @@
 #!/bin/bash
 
-curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
+curl -XPUT "http://localhost:9200/v2_2/topic/_mapping" -d '
 {
 	
 		"topic": {
-
-			"_all": {
-            	"indexAnalyzer": "ik",
-            	"searchAnalyzer": "ik",
-            	"term_vector": "no",
-            	"store": "false"
-        	},
         	
 			"properties": {
 			    "content": {
@@ -93,5 +86,15 @@ curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
 			}
 		}
 	
+}
+'
+curl -XPOST localhost:9200/_aliases -d '
+{
+    "actions": [
+        { "add": {
+            "alias": "v2",
+            "index": "v2_2"
+        }}
+    ]
 }
 '
