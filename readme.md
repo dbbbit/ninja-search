@@ -16,8 +16,7 @@ elasticsearch 配置(推荐)
 
 config /elasticsearch.yml
 
-启用 ES 动态脚本,以提供综合排序
-
+    #: 启用 ES 动态脚本,以提供综合排序
     script.disable_dynamic: false
 
 
@@ -29,8 +28,7 @@ elasticsearch-rtf 配置
 
 elasticsearch-rtf / elasticsearch / bin / service / elasticsearch.conf
 
-默认JAVA HEAP大小为2G，根据你的服务器环境，需要自行调整，一般设置为物理内存的50%.
-
+    #:默认JAVA HEAP大小为2G，根据你的服务器环境，需要自行调整，一般设置为物理内存的50%.
     set.default.ES_HEAP_SIZE=2048
 
 elasticsearch-rtf / config /elasticsearch.yml
