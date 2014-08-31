@@ -4,15 +4,15 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 from pymongo import MongoClient
 
-
+START = 1
 es = Elasticsearch()
 client = MongoClient('mongodb://localhost:27017/')
 
 
 def index(index_name):
     db = client['v2ex']['topic'] 
-
-    for item in db.find():
+    cursor = db.find({"_id":{"$gt":START}}).sort('_id')
+    for item in cursor:
         item['created'] = item['created'] * 1000
         item['last_modified'] = item['last_modified'] * 1000
         item['last_touched'] = item['last_touched'] * 1000
@@ -22,6 +22,7 @@ def index(index_name):
         except Exception, e:
             print(e)
             time.sleep(5)
+            continue
        
         info = "indexed topic %d"%(item['_id'])
         print(info)
