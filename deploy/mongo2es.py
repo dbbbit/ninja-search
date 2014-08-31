@@ -18,13 +18,16 @@ def index(index_name):
         item['last_touched'] = item['last_touched'] * 1000
         item['rcontent'] = get_replies(item['_id'])
         try:
+            a = time.time()
             es.index(index=index_name, doc_type="topic", id=item['_id'], body=item)
+            b = time.time()
+
         except Exception, e:
             print(e)
             time.sleep(5)
             continue
        
-        info = "indexed topic %d"%(item['_id'])
+        info = "indexed topic %d cost time %d"%(item['_id'],b-a)
         print(info)
 
 
