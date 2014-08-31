@@ -17,6 +17,7 @@ elasticsearch 配置(推荐)
 config /elasticsearch.yml
 
 启用 ES 动态脚本,以提供综合排序
+
     script.disable_dynamic: false
 
 
@@ -35,6 +36,7 @@ elasticsearch-rtf / elasticsearch / bin / service / elasticsearch.conf
 elasticsearch-rtf / config /elasticsearch.yml
 
 启用 ES 动态脚本,以提供综合排序
+
     script.disable_dynamic: false
 
 
@@ -49,11 +51,11 @@ mapping scheme
 
 * elasticsearch 下执行
 
-    ./deploy/init.sh
+        ./deploy/init.sh
 
 * elasticsearch-rtf 下执行
 
-    ./deploy/init_with_ik.sh
+        ./deploy/init_with_ik.sh
 
 mongo index
 
