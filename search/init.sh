@@ -5,6 +5,14 @@ curl -XPUT "http://localhost:9200/v2/topic/_mapping" -d '
 {
 	
 		"topic": {
+
+			"_all": {
+            	"indexAnalyzer": "ik",
+            	"searchAnalyzer": "ik",
+            	"term_vector": "no",
+            	"store": "false"
+        	},
+        	
 			"properties": {
 			    "content": {
 					"type": "string"
