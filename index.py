@@ -7,7 +7,7 @@ from time import time
 import json
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 @app.route("/", methods=['GET'])
 def index():
