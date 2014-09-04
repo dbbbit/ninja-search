@@ -84,6 +84,7 @@ def index():
         for k in del_key:
             if result.has_key(k):
                 del result[k]
+        result['cost'] = time1 - time0
         
         return jsonify(**result)
     
