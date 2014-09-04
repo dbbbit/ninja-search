@@ -12,8 +12,12 @@ em {
 	float: left;
 }
 
+#sort-by {
+	display: none;
+}
+
 #sort-bar {
-	margin-left: 3.3em;
+	margin-left: 1.5em;
 }
 
 #item {
