@@ -3,33 +3,35 @@ import json
 
 class Search:
 
+    """ 
+        API Doc for Python Elasticsearch Client
+        http://elasticsearch-py.readthedocs.org/en/master/ 
+        
+        http://elasticsearch-py.readthedocs.org/en/master/api.html?highlight=search#elasticsearch.Elasticsearch.search
+    """
     es = Elasticsearch()
     params = {}    
-    DSL = {}
+    
     def __init__(self, **kargs):
-        self.DSL = {
+
+        #: highlight some result field
+        self.params['body'] = {
             "highlight" : {
                 "fields" : {
                     "content" : {},
                     "title" : {},
-                    "rcontent" : {},
+                    "rcontent" : {},    #: replies
                 }
              },
-             "min_score": 0,
         }
         self.params.update(kargs)
-        self.params['body'] = self.DSL
-        if not self.params.has_key('size'):
-            self.params['size'] = 10
+        
 
     def __setitem__(self, key, item):
         self.params[key] = item
-    
-    def update_params(self, **kargs):
-        self.params.update(kargs)
 
-    def toString(self):
-        return json.dumps(self.params, indent=True)
+    def __getitem__(self, key):
+        return self.params[key]
 
     def exe(self):
         try:
@@ -41,7 +43,7 @@ class Search:
 
 if __name__ == "__main__":
 
-    s = Search(index="v2ex", doc_type="topic")
+    s = Search(index="v2", doc_type="topic")
     s['size'] = 10
     s['q'] = 'content:hello' 
     s['_source_include'] = ['content', 'title']
