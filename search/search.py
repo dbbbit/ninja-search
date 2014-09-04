@@ -19,7 +19,8 @@ class Search:
         }
         self.params.update(kargs)
         self.params['body'] = self.DSL
-        self.params['size'] = 10
+        if not self.params.has_key('size'):
+            self.params['size'] = 10
 
     def __setitem__(self, key, item):
         self.params[key] = item
