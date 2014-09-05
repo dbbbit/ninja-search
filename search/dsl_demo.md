@@ -1,5 +1,5 @@
 // basic query
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
     "query" : {
         "term" : { "title" : "go" }
     }
@@ -7,7 +7,7 @@ curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
 '
 
 // from & size
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
     "query" : {
         "term" : { "title" : "go" }
     },
@@ -16,7 +16,7 @@ curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
 }
 '
 // sort
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
     "query" : {
         "term" : { "title" : "go" }
     },
@@ -30,7 +30,7 @@ curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
 '
 
 // sort base on script
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
     "query" : {
         "term" : { "title" : "go" }
     },
@@ -50,7 +50,7 @@ curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
 '
 
 // script and score
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
     "query" : {
         "term" : { "title" : "go" }
     },
@@ -70,7 +70,7 @@ curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
 '
 
 //multi-match query
-curl -XGET 'http://localhost:9200/v2ex/topic/_search?pretty' -d '{
+curl -XGET 'http://localhost:9200/v2/topic/_search?pretty' -d '{
    "query": {
     "filtered": {
       "query": {
