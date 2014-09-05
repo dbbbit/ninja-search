@@ -7,7 +7,7 @@ from time import time
 import json
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 
 @app.route("/", methods=['GET'])
 @app.route("/api", methods=['GET'])

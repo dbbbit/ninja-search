@@ -6,14 +6,13 @@ ninja-search
 ### require:
 
 * flask
-* mongo
 * elasticsearch + [ik分词插件](https://github.com/medcl/elasticsearch-analysis-ik)
 * v2ex-scrapy 
 
 爬取数据
 --------
 
-[为搜索准备数据](https://github.com/GreenFaith/v2ex_scrapy)
+[准备数据](https://github.com/GreenFaith/v2ex_scrapy)
 
 
 elasticsearch 配置
@@ -41,7 +40,7 @@ mongo index
 
 索引数据
     
-    deploy/mongo2es.py ik
+    deploy/mongo2es.py 
     
 将线上索引指向新的索引
     

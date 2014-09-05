@@ -2,23 +2,24 @@
 <html>
     <head>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../static/css/index.css">
         <link rel="shortcut icon" href="../static/favicon.ico" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     </head>
     <body>
     	<div class="container">
-        <div class="row ninja">
-          <img src="../static/image/ninja.png"/>
+        <div class="ninja" style="margin: 20% 0 20px;">
+          <img src="../static/image/ninja.png" class="center-block" />
         </div>
-    		<form role="form" class="row" id="search-form">
-  				<div class="form-group col-md-6 col-xs-8" >
-    				<input type="text" class="form-control" id="keyword" name="q">
-  				</div>
-  				<button type="submit" class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span></button>
-			   </form>
+    	  <form role="form" class="row" id="search-form">
+          <div class="input-group col-md-6 col-md-push-3">
+            <input type="text" class="form-control" id="keyword" name="q" autofocus="autofocus">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div>
+        </form>
 		</div>
     <!--GA-->
     <script>
