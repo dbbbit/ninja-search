@@ -1,13 +1,15 @@
 #coding:utf8
-
-from flask import Flask, request, render_template, jsonify
-from search import Search
-from util import gen_pages, pretty_date
-from time import time
 import json
+from time import time
+from datetime import datetime
+from search import Search
+from settings import handler
+from util import gen_pages, pretty_date
+from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
 app.debug = True
+app.logger.addHandler(handler)
 
 @app.route("/", methods=['GET'])
 @app.route("/api", methods=['GET'])
@@ -22,10 +24,9 @@ def index():
         raw = bool(request.args.get('raw', ''))
 
     except Exception, e:
-
         result = {
             "status_code":400,
-            "error":"params error"
+            "error":u"(Ｔ▽Ｔ) params error "
         }
         return jsonify(**result)
     
@@ -68,10 +69,21 @@ def index():
             }
         }
     
-    #: run search engine
-    time0 = time()
-    result = search.exe()
-    time1 = time()
+    #: do search in es
+    try:
+        time0 = time()
+        result = search.exe()
+        time1 = time()
+    except Exception, e:
+        msg = str(datetime.now()) + '\n' + \
+            unicode(request.url) + '\n' + str(e) + '\r\n'
+        app.logger.error(msg)
+        result = {
+            "status_code":500,
+            "error":"Sorry,server error T_T"
+        }
+        return jsonify(**result)
+    
     
     #: [return] raw json 
     if raw and app.debug == True:
