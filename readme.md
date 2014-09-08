@@ -29,7 +29,7 @@ esroot /config /elasticsearch.yml
 索引
 --------
 
-创建 index  
+Scheme Mapping in ES 
     
     sh ninja-search/deploy/mapping_ik.sh
 

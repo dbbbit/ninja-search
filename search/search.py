@@ -7,7 +7,6 @@ class Search:
         API Doc for Python Elasticsearch Client
         http://elasticsearch-py.readthedocs.org/en/master/ 
         
-        http://elasticsearch-py.readthedocs.org/en/master/api.html?highlight=search#elasticsearch.Elasticsearch.search
     """
     es = Elasticsearch()
     params = {}    

@@ -15,7 +15,6 @@ app.logger.addHandler(handler)
 @app.route("/api", methods=['GET'])
 def index():
 
-    #: request args
     try:
         _from = int(request.args.get('from', '0'))
         limit = int(request.args.get('limit', '10'))
@@ -47,7 +46,7 @@ def index():
     search['size'] = limit
     search['from_'] = _from
     if request.path == '/api':
-        #: field design for api
+        #: field exclude for api
         search['_source_exclude'] = ['content_rendered', 'rcontent']
 
     #: choose a sort method from ['sumup','replies','created','match']
