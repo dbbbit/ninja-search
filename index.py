@@ -57,6 +57,8 @@ def index():
         search['sort'] = "%s:desc"%s
 
     if s == 'sumup':
+        if search['sort']:
+            del search['sort']
         search['body']['sort'] = {
             "_script" : {
                 "script" : "(doc['created'].value-1272124800000) * log10(doc['replies'].value+1)* log10(doc.score)",

@@ -30,7 +30,12 @@ class Search:
         self.params[key] = item
 
     def __getitem__(self, key):
-        return self.params[key]
+        if self.params.has_key(key):
+            return self.params[key]
+
+    def __delitem__(self, key):
+        if self.params.has_key(key):
+            del self.params[key]
 
     def exe(self):
         try:
