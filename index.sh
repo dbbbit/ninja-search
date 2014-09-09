@@ -1,4 +1,5 @@
 #!/bin/bash
+#：定时更新索引
 now()  
 {  
     date "+%Y-%m-%d"  

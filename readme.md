@@ -3,16 +3,17 @@ ninja-search
 
 [shixiz.com](http://shixiz.com)
 
-### require:
+require:
+--------
 
 * flask
 * elasticsearch + [ik分词插件](https://github.com/medcl/elasticsearch-analysis-ik)
-* v2ex-scrapy 
+* [v2ex_scrapy](https://github.com/dbbbit/v2ex_scrapy) 
 
 爬取数据
 --------
 
-[准备数据](https://github.com/dbbbit/v2ex_scrapy)
+[见 v2ex_scrapy 说明](https://github.com/dbbbit/v2ex_scrapy)
 
 
 elasticsearch 配置
@@ -29,7 +30,7 @@ esroot /config /elasticsearch.yml
 索引
 --------
 
-Scheme Mapping in ES 
+ElasticSearch Scheme Mapping  
     
     sh ninja-search/deploy/mapping_ik.sh
 
@@ -46,10 +47,9 @@ Scheme Mapping in ES
     sh deploy/alias_v2_ik.sh
 
 
-Run
+Run 
 ----
   
-    python index.py
+    sudo python index.py
 
 
-Then you can search v2ex
