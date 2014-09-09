@@ -12,7 +12,7 @@ ninja-search
 爬取数据
 --------
 
-[准备数据](https://github.com/GreenFaith/v2ex_scrapy)
+[准备数据](https://github.com/dbbbit/v2ex_scrapy)
 
 
 elasticsearch 配置
@@ -33,9 +33,8 @@ Scheme Mapping in ES
     
     sh ninja-search/deploy/mapping_ik.sh
 
-mongo index
-    
-    #: 手动创建索引
+手动创建 Mongo 索引
+
     db.reply.createIndex({topic_id:1})
 
 索引数据
