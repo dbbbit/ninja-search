@@ -3,12 +3,12 @@ import json
 from time import time
 from datetime import datetime
 from search import Search
-from settings import handler
+from settings import handler, DEBUG
 from util import gen_pages, pretty_date
 from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
-app.debug = True
+app.debug = DEBUG
 app.logger.addHandler(handler)
 
 @app.route("/", methods=['GET'])
