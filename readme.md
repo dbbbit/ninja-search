@@ -3,6 +3,9 @@ ninja-search
 
 [shixiz.com](http://shixiz.com)   
 
+api
+---
+
 [Search Api](https://github.com/dbbbit/ninja-search/wiki/Search-Api)
 
 require:
