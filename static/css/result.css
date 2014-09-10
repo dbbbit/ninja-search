@@ -24,10 +24,11 @@ a {
 #item-title {
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	white-space: nowra;
+	line-height: normal;
 }
 
-#item-content {
+#item-content 
 	font-color: #545454;
 	word-wrap: break-word;
 }
