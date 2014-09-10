@@ -2,12 +2,13 @@ ninja-search
 ===
 
 [shixiz.com](http://shixiz.com)
+[Search Api](https://github.com/dbbbit/ninja-search/wiki/Search-Api)
 
 require:
 --------
 
 * flask
-* elasticsearch + [ik分词插件](https://github.com/medcl/elasticsearch-analysis-ik)
+* [elasticsearch](http://www.elasticsearch.org/overview/elasticsearch/) + [ik分词插件](https://github.com/medcl/elasticsearch-analysis-ik)
 * [v2ex_scrapy](https://github.com/dbbbit/v2ex_scrapy) 
 
 爬取数据
