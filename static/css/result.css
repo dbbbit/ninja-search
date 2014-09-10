@@ -25,6 +25,7 @@ a {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	line-height: normal;
 }
 
 #item-content {
