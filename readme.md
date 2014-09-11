@@ -3,10 +3,11 @@ ninja-search
 
 [shixiz.com](http://shixiz.com)   
 
-api
----
+wiki
+-----
+* [Home Page](https://github.com/dbbbit/ninja-search/wiki)
 
-[Search Api](https://github.com/dbbbit/ninja-search/wiki/Search-Api)
+* [Search Api](https://github.com/dbbbit/ninja-search/wiki/Search-Api)
 
 require:
 --------
