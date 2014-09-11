@@ -17,15 +17,18 @@ def max_id():
     return db.find().sort("_id", -1).limit(1)[0]['_id']
 
 
-def index(index_name, size):
+def index(index_name, start_id=None, end_id=None):
     
-    MAX = max_id()
+    if not end_id:
+        end_id = max_id()
+    if not start_id:
+        start_id = end_id - 200
 
-    #: select * from topic where _id < MAX order by _id desc limit 200
-    cursor = db.find({"_id":{"$lt": MAX}})  \
+    #: select * from topic where _id < end_id order by _id desc limit (end_id - start_id)
+    cursor = db.find({"_id":{"$lt": end_id}})  \
                     .sort([('_id',-1)])     \
                         .batch_size(10)     \
-                            .limit(size)
+                            .limit(end_id - start_id)
 
     for item in cursor:
         item['created'] = item['created'] * 1000
@@ -69,6 +72,19 @@ def get_replies(topic_id):
 
 
 if __name__ == '__main__':
-    #: index the last 200 topics with replies
-    index('ik', 200)
+
+    """
+        usage:
+            1    ./deploy/mongo2es.sh
+            2    ./deploy/mongo2es.sh start_id=1 end_id=3
+
+    """
+    args = {}
+
+    for i in range(len(sys.argv)):
+        kv = sys.argv[i].split('=')
+        if len(kv) == 2:
+            args[kv[0]]= int(kv[1])
+
+    index('ik', **args)
 
