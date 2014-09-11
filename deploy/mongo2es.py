@@ -44,7 +44,7 @@ def index(index_name, size):
             time.sleep(5)
             continue
        
-        info = "cost %d ms: topic %d indexed."%((b-a)*1000, item['_id'])
+        info = str(datetime.now()) + "cost %d ms: topic %d indexed."%((b-a)*1000, item['_id'])
         print(info)
 
 
