@@ -25,32 +25,32 @@ require:
 elasticsearch 配置
 -------------------
 
-[安装 ik 分词](https://github.com/medcl/elasticsearch-analysis-ik)
+* [安装 ik 分词](https://github.com/medcl/elasticsearch-analysis-ik)
 
-esroot /config /elasticsearch.yml
+* 在 esroot /config /elasticsearch.yml 添加以下内容：
 
-    #: 启用 ES 动态脚本,以提供综合排序
-    script.disable_dynamic: false
+        #: 启用 ES 动态脚本,以提供综合排序
+        script.disable_dynamic: false
 
 
 索引
 --------
 
-ElasticSearch Scheme Mapping  
-    
-    sh ninja-search/deploy/mapping_ik.sh
+* ElasticSearch Scheme Mapping  
 
-手动创建 Mongo 索引
+        sh ninja-search/deploy/mapping_ik.sh
 
-    db.reply.createIndex({topic_id:1})
+* 手动创建 Mongo 索引
 
-索引数据
+        db.reply.createIndex({topic_id:1})
+
+* 索引数据
     
-    deploy/mongo2es.py 
+        deploy/mongo2es.py 
     
-将线上索引指向新的索引
+* 将线上索引指向新的索引
     
-    sh deploy/alias_v2_ik.sh
+        sh deploy/alias_v2_ik.sh
 
 
 Run 
