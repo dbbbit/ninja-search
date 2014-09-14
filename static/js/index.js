@@ -1,7 +1,8 @@
 $(function ($) {
     var q = $('#keyword'),
+        max_suggest = 10, //读本地词库时的最大提示数
+        cache = {},
         local_default = [
-            "v2ex",
             "Project Babel",
             "V2EX",
             "OLIVIDA",
@@ -822,14 +823,13 @@ $(function ($) {
             "Factorio",
             " WATCH",
             "Corvette"
-        ],
-        cache = {}
+        ]
 
     var filter = function (array, searching_str) {
         return $.grep(array, function (value) {
             //关键字满足开头才返回,忽略大小写
             return 0 === value.toLowerCase().indexOf(searching_str.toLowerCase())
-        })
+        }).slice(0, max_suggest)
     }
 
     q.autocomplete({
