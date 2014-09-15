@@ -1,4 +1,5 @@
 $(function ($) {
+    // http://api.jqueryui.com/autocomplete/
     var q = $('#keyword'),
         max_suggest = 10, //读本地词库时的最大提示数
         cache = {},
@@ -21,13 +22,16 @@ $(function ($) {
                 rsp(cache[term])
             }
             else {
-                $.getJSON('/', rq)
+                $.getJSON('http://107.155.97.232/suggest', rq)
                     //远程获取
                     .done(function (data) {
                         console.info('done')
-                        cache[term] = data //缓存每次远程结果
-                        rsp(data)
-                    })
+                        if(data['data']){
+                            cache[term] = data['data'] //缓存每次远程结果
+                            rsp(data['data'])
+                        }   
+                    })  
+
                     //远程失败则从本地获取
                     .fail(function (jq) {
                         console.info('fail')
