@@ -1,0 +1,3 @@
+elasticsearch==1.2.0
+pymongo==2.7
+Flask

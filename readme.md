@@ -13,13 +13,14 @@ require:
 --------
 
 * flask
+* mongodb  
 * [elasticsearch](http://www.elasticsearch.org/overview/elasticsearch/) + [ik分词插件](https://github.com/medcl/elasticsearch-analysis-ik)
 * [v2ex_scrapy](https://github.com/dbbbit/v2ex_scrapy) 
 
-爬取数据
---------
+python package
+--------------
 
-[见 v2ex_scrapy 说明](https://github.com/dbbbit/v2ex_scrapy)
+sudo pip install -r requirements.txt
 
 
 elasticsearch 配置
@@ -31,6 +32,12 @@ elasticsearch 配置
 
         #: 启用 ES 动态脚本,以提供综合排序
         script.disable_dynamic: false
+
+
+爬取数据
+--------
+
+[见 v2ex_scrapy 说明](https://github.com/dbbbit/v2ex_scrapy)
 
 
 索引
@@ -57,5 +64,9 @@ Run
 ----
   
     sudo python index.py
+
+
+
+
 
 
