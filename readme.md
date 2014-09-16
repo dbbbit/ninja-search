@@ -37,7 +37,7 @@ elasticsearch 配置
 爬取数据
 --------
 
-[见 v2ex_scrapy 说明](https://github.com/dbbbit/v2ex_scrapy)
+* [见 v2ex_scrapy 说明](https://github.com/dbbbit/v2ex_scrapy)
 
 
 索引
