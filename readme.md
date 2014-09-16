@@ -20,7 +20,7 @@ require:
 python package
 --------------
 
-sudo pip install -r requirements.txt
+    sudo pip install -r requirements.txt
 
 
 elasticsearch 配置
