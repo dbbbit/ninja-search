@@ -7,15 +7,15 @@ def gen_pages(current, max_page):
         return [1 2 3 4 5 6 7]
     """
     def filter(x):
-        if x >= 0 and x <= max_page: 
+        if x >= 0 and x <= max_page:
             return x
+        else:
+            return None
 
-        #: else will return None 
-
-    return [x for x in map(filter, 
-                            range(current-3, current) + range(current, current+4)) 
-                if x is not None]
+    return [x for x in map(
+        filter, range(current-3, current) + range(current, current+4))
+        if x is not None]
 
 if __name__ == "__main__":
 
-    print(gen_pages(4,8))
+    print(gen_pages(4, 8))

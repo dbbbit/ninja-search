@@ -9,7 +9,7 @@ def pretty_date(time=False):
 
     if type(time) is int or type(time) is float:
         diff = now - datetime.fromtimestamp(time)
-    elif isinstance(time,datetime):
+    elif isinstance(time, datetime):
         diff = now - time
     elif not time:
         diff = now - now
