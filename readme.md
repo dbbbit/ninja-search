@@ -1,6 +1,5 @@
 ninja-search
 ===
-shixiz.com 已暂停服务，感谢大家一直以来的支持。
 
 wiki
 -----
